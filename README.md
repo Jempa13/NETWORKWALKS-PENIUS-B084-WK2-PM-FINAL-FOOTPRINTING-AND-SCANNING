@@ -136,7 +136,7 @@ Internal network discovery was conducted on a local Windows host to map active d
 | **Nslookup DNS Resolution** | `![Nslookup Output](Screenshot-PM1-TASK3.png)` |
 | **Curl HTTP Headers** | `![Curl Output](Screenshot-PM1-TASK4.png)` |
 | **Wafw00f WAF Detection** | `![Wafw00f Output](Screenshot-PM1-TASK5.png)` |
-| **Zenmap Network Topology** | `![Zenmap Topology](evidence/06-zenmap-topology.png)` |
+| **Zenmap Network Topology** | `![Zenmap Topology](Screenshot-Znmap-topology.png)` |
 
 ---
 
