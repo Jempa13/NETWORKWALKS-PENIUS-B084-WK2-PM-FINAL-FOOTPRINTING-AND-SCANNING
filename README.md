@@ -1,4 +1,3 @@
-# NETWORKWALKS-PENIUS-B084-WK2-PM-FINAL-FOOTPRINTING-AND-SCANNING
 # 🛡️ Penetration Testing Report: Footprinting & Network Scanning Phases
 **W2-PM-FINAL | Cybersecurity & Ethical Hacking Internship | Networkwalks (Batch B084)**
 
@@ -81,3 +80,71 @@ wafw00f networkwalks.com
 
 # 6. Comprehensive DNS Record Enumeration
 dnsrecon -d networkwalks.com
+```
+
+#### Key Observations
+* **Domain & Hosting (`whois`):** Registered via GoDaddy (Domain ID: `2452319255_DOMAIN_COM-VRSN`), using HostGator name servers (`NS6135.HOSTGATOR.COM`, `NS6136.HOSTGATOR.COM`), with `DNSSEC: unsigned`.
+* **IP Resolution (`nslookup`):** Resolved `networkwalks.com` to `192.232.216.135`.
+* **Web Stack (`whatweb`):** Identified Apache web server, WordPress 7.1.4, WP Download Manager 3.3.76, Bootstrap 7.1.4, and jQuery 3.7.1.
+* **HTTP Headers (`curl -I`):** Returned HTTP/2 200 on Apache, exposed the WordPress REST API link header (`/wp-json/`), and revealed the `__wpdm_client` session cookie.
+* **WAF Detection (`wafw00f`):** Confirmed active protection behind ModSecurity (SpiderLabs) WAF.
+* **DNS Enumeration (`dnsrecon`):** Mapped NS, MX, SPF/TXT, and SRV records detailing mail and domain infrastructure.
+
+---
+
+### 4.2 Phase 2: Local Network Scanning (`Zenmap` & `Windows CMD`)
+
+Internal network discovery was conducted on a local Windows host to map active devices and export a visual topology:
+
+1. **Local Interface Discovery:** Ran `ipconfig /all` in Windows CMD to determine the local subnet and interface MAC address (`7C-76-35-8D-C5-39`).
+2. **Host Discovery (`Ping Scan`):** Targeted the local subnet in Zenmap, identifying active live hosts including `10.126.200.178`.
+3. **Topology Export:** Generated the visual node map in Zenmap's Topology tab with the legend enabled and exported the diagram to PDF.
+
+---
+
+## 📊 5. Risk Analysis & Impact Assessment
+
+> **Note:** The items below represent reconnaissance observations from authorized footprinting and host discovery exercises—not confirmed exploitable vulnerabilities. No exploitation was performed.
+
+| # | Observation / Finding | Evidence | Potential Impact | Risk Level |
+| :-: | :--- | :--- | :--- | :-: |
+| **1** | **Web Technology & Version Disclosure** | `whatweb` identified WordPress 7.1.4 & WP Download Manager 3.3.76 | Enables attackers to cross-reference exact plugin/CMS versions against known CVE databases | 🟡 **Medium** |
+| **2** | **Origin Server IP Identifiable** | `nslookup` resolved domain to `192.232.216.135` | Exposes hosting network location for targeted infrastructure profiling | 🟢 **Low** |
+| **3** | **HTTP Technical Headers & REST API Exposure** | `curl -I` exposed `/wp-json/` endpoint and server headers | Assists automated fingerprinting and user/endpoint enumeration | 🟢 **Low** |
+| **4** | **WAF Architecture Identifiable** | `wafw00f` detected ModSecurity (SpiderLabs) | Reveals defensive perimeter technology, aiding evasion research | 🟢 **Low** |
+| **5** | **DNS Infrastructure Exposure** | `dnsrecon` enumerated NS, MX, TXT/SPF, and SRV records | Helps adversaries map mail routing, third-party services, and DNS posture | 🟡 **Medium** |
+
+---
+
+## 🛡️ 6. Security Recommendations
+
+* **Minimize Banner & Version Disclosure:** Configure WordPress, plugins, and Apache headers (`ServerTokens Prod`, `ServerSignature Off`) to suppress exact version numbers.
+* **Patch Management:** Keep WordPress core, themes, and plugins (such as WP Download Manager) updated against current security advisories.
+* **Harden HTTP Headers & API Endpoints:** Restrict unauthenticated access to `/wp-json/` where not required and audit exposed Link and custom cache headers.
+* **Audit DNS Records & DNSSEC:** Periodically review public TXT/SPF and SRV records to remove stale entries and evaluate enabling DNSSEC.
+* **Maintain & Tune WAF Rules:** Keep ModSecurity active with updated OWASP Core Rule Set (CRS) policies and continuous alert monitoring.
+* **Routine Internal Asset Discovery:** Conduct scheduled internal subnet scans, verify unknown MAC/IP addresses against an authorized asset inventory, and maintain up-to-date network topology documentation.
+
+---
+
+## 📸 7. Evidence & Screenshots
+
+*(Upload your screenshots to an `images/` or `evidence/` folder in this repository and update the filenames below if needed)*
+
+| Module / Tool | Screenshot Preview |
+| :--- | :--- |
+| **WHOIS Lookup** | `![WHOIS Output](evidence/01-whois.png)` |
+| **WhatWeb Fingerprinting** | `![WhatWeb Output](evidence/02-whatweb.png)` |
+| **Nslookup DNS Resolution** | `![Nslookup Output](evidence/03-nslookup.png)` |
+| **Curl HTTP Headers** | `![Curl Output](evidence/04-curl-headers.png)` |
+| **Wafw00f WAF Detection** | `![Wafw00f Output](evidence/05-wafw00f.png)` |
+| **Zenmap Network Topology** | `![Zenmap Topology](evidence/06-zenmap-topology.png)` |
+
+---
+
+## 👤 Author
+
+**Penius Jempa**  
+*Cybersecurity Professional — Batch B084 | BSc Computer Science Student*   
+* 🐙 **GitHub:** [@Jempa13](https://github.com/Jempa13)  
+* 🎓 **Program:** Cybersecurity & Ethical Hacking Internship — Networkwalks (Week 02)
