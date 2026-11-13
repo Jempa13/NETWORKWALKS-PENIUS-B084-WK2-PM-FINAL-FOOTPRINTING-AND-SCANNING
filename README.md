@@ -24,10 +24,7 @@
 
 ## ⚠️ 1. Liability & Legal Disclaimer
 
-> **Strict Educational & Authorized Use Only:**  
 > All reconnaissance and network scanning activities documented in this repository were performed strictly on systems where explicit written permission was obtained (`networkwalks.com`) or on personally owned local network hardware.  
-> 
-> These materials are published solely for educational and defensive research purposes. Unauthorized scanning, footprinting, or exploitation of systems without prior written consent is illegal in most jurisdictions and can result in criminal prosecution, fines, and permanent professional consequences. Neither the author nor Networkwalks assumes liability for misuse of this information.
 
 ---
 
