@@ -129,15 +129,13 @@ Internal network discovery was conducted on a local Windows host to map active d
 
 ## 📸 7. Evidence & Screenshots
 
-*(Upload your screenshots to an `images/` or `evidence/` folder in this repository and update the filenames below if needed)*
-
 | Module / Tool | Screenshot Preview |
 | :--- | :--- |
-| **WHOIS Lookup** | `![WHOIS Output](evidence/01-whois.png)` |
-| **WhatWeb Fingerprinting** | `![WhatWeb Output](evidence/02-whatweb.png)` |
-| **Nslookup DNS Resolution** | `![Nslookup Output](evidence/03-nslookup.png)` |
-| **Curl HTTP Headers** | `![Curl Output](evidence/04-curl-headers.png)` |
-| **Wafw00f WAF Detection** | `![Wafw00f Output](evidence/05-wafw00f.png)` |
+| **WHOIS Lookup** | `![WHOIS Output](Screenshot-PM1-TASK1.png)` |
+| **WhatWeb Fingerprinting** | `![WhatWeb Output](Screenshot-PM1-TASK2.png)` |
+| **Nslookup DNS Resolution** | `![Nslookup Output](Screenshot-PM1-TASK3.png)` |
+| **Curl HTTP Headers** | `![Curl Output](Screenshot-PM1-TASK4.png)` |
+| **Wafw00f WAF Detection** | `![Wafw00f Output](Screenshot-PM1-TASK5.png)` |
 | **Zenmap Network Topology** | `![Zenmap Topology](evidence/06-zenmap-topology.png)` |
 
 ---
